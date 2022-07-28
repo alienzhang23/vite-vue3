@@ -1,8 +1,11 @@
 import axios from 'axios';
-import router from '@/router'
+import { Toast } from 'vant';
+import baseUrl from './config';
+import { useRouter } from "vue-router";
+const router = useRouter()
 // 创建axios实例
 const service = axios.create({
-    baseURL: '', // api的base_url
+    baseURL: baseUrl.dev, // api的base_url
     timeout: 15000 // 请求超时时间
 });
 
@@ -10,7 +13,8 @@ const service = axios.create({
 service.interceptors.request.use(config => {
     config.headers = {
         'Content-Type': 'application/json',
-        // 'Token-Authorization': window.localStorage.getItem('adminToken') || ''
+        // 'areaId': AREAID,
+        'Token-Authorization': window.localStorage.getItem('adminToken') || ''
     };
     // config.headers['appId'] = APPID;
     // config.headers['secret'] = SECRET;
@@ -40,19 +44,19 @@ service.interceptors.response.use(
                 }
             });
         } else if (code === 403) {
-            // localStorage.clear();
-            // router.push('/login')
-            // Message.error(xhr.data.message)
+            localStorage.clear();
+            router.push('/login')
+            Toast.fail(xhr.data.message)
             return Promise.reject(xhr);
         } else {
-            // Message.error(xhr.data.message)
+            Toast.fail(xhr.data.message)
             return Promise.reject(xhr);
         }
     },
     error => {
         if (error.response.status == 401) {
-            // window.localStorage.removeItem('adminToken'); //清除数据
-            // window.location.hash = '#/login';
+            window.localStorage.removeItem('adminToken'); //清除数据
+            window.location.hash = '#/login';
         }
         return Promise.reject(error)
     }

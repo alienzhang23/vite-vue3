@@ -5,6 +5,8 @@ import router from './router'
 import store from './store'
 import 'vant/lib/index.css'
 import Vant from 'vant'
+import API from '@/api/index' 
+const app=createApp(App)
+app.config.globalProperties.$API = API
 
-
-createApp(App).use(store).use(router).use(Vant).mount('#app')
+app.use(store).use(router).use(Vant).mount('#app')

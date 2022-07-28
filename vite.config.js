@@ -5,6 +5,12 @@ const path = require('path')
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  resolve: {
+    // 配置路径别名
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
   plugins: [vue()],
   pluginOptions: {
     'style-resources-loader': {
