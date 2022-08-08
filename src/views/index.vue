@@ -18,7 +18,7 @@ export default {
       API.config.getDataDetail().then()
     });
     const funGo = () => {
-      router.push("/page1");
+      router.push("/login");
     };
     return {
       ...toRefs(data),

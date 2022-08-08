@@ -1,0 +1,59 @@
+.common-label{
+    &.common-back{
+        padding-bottom: 60px;
+    }
+    .cl-status{
+        font-size: 16px;
+        color: #323232;
+        opacity: 0.33;
+        padding-bottom: 21px;
+    }
+    .cl-text{
+        font-size: 17px;
+        color: #323232;
+        text-align: center;
+        line-height: 30px;
+        padding-bottom: 30px;
+    }
+    .cl-btn{
+        width: 160px;
+        margin: 0 auto;
+        color: #b1b1b1;
+        font-size: 14px;
+        .btn{
+            height: 38px;
+            line-height: 38px;
+            font-size: 16px;
+            border-radius: 19px;
+            margin-bottom: 12px;
+            text-decoration: none;
+        }
+        .icon-click{
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+    .cl-back{
+        font-size: 16.5px;
+        color: @btn;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 35px;
+        z-index: 1;
+        text-align: center;
+        &>div{
+            display: inline-block;
+            cursor: pointer;
+        }
+        .icon-choice{
+            width: 16px;
+            height: 16px;
+            margin-right: 5px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+}

@@ -1,0 +1,56 @@
+@import "./reset";
+@import "./mixins";
+@import "./loading";
+[v-cloak]{
+    display: none;
+}
+html,body,#app{
+    height: 100%;
+}
+body{
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #2c3e50;
+    font-size: 14px!important;
+    user-select:none;
+}
+#app{
+    position: relative;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    max-width:768px/1.5;
+    margin: 0 auto;
+}
+.btn{
+    display: block;
+    cursor: pointer;
+    background: @btn;
+    color: #fff;
+    text-align: center;
+    font-size: 17px
+}
+@icons:child,enter,bg,date,describe,describe1,empty,link,logo,logo-child,logo-hailiang,pattern,success,pho,choice,click;
+.forEach(@list){
+    .loop(@i) when(@i<=length(@list)){
+      @name:extract(@list, @i);
+      .icon-@{name}{
+        display: table-cell;
+        .bg-image('~assets/img/@{name}');
+        .bg()
+      }
+      .loop(@i+1)
+    }
+    .loop(1);
+}
+.forEach(@icons);
+
+.fadeIn-enter-active, .fadeIn-leave-active {
+    transition: all .4s;
+    transform: scale3d(1,1,1)
+}
+.fadeIn-enter, .fadeIn-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+    transform: scale3d(0.5,0.5,1)
+    //transform: translateX(-20%);
+}
