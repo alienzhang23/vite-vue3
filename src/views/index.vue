@@ -15,7 +15,7 @@ export default {
     const API = _this.proxy.$API;
     onMounted(() => {
     //示例
-      API.config.getDataDetail().then()
+      API.login.getDataDetail().then()
     });
     const funGo = () => {
       router.push("/login");

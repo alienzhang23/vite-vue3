@@ -14,16 +14,12 @@ service.interceptors.request.use(config => {
     config.headers = {
         'Content-Type': 'application/json',
         // 'areaId': AREAID,
-        'Token-Authorization': window.localStorage.getItem('adminToken') || ''
+        'Authorization': window.localStorage.getItem('adminToken') || ''
     };
-    // config.headers['appId'] = APPID;
-    // config.headers['secret'] = SECRET;
     if (config.method == 'get') {
         config.params = config.params || {};
-        // config.params.areaId = config.params.areaId || AREAID;
     } else {
         config.data = config.data || {};
-        // config.data.areaId = config.data.areaId || AREAID;
     }
     return config
 }, error => {

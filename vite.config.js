@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
-import Components from 'unplugin-vue-components/vite';
-import { VantResolver } from 'unplugin-vue-components/resolvers';
+import Components from "unplugin-vue-components/vite";
+import { VantResolver } from "unplugin-vue-components/resolvers";
 import postCssPxToRem from "postcss-pxtorem";
 const path = require("path");
 
@@ -11,6 +11,17 @@ export default defineConfig({
     // 配置路径别名
     alias: {
       "@": path.resolve(__dirname, "./src"),
+    },
+  },
+  server: {
+    host: "0.0.0.0",
+    port: 8084,
+    proxy: {
+      "/logistical-march": {
+        target: "http://172.21.32.153:8095/logistical-march", //万志成本地
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/logistical-march/, ""),
+      },
     },
   },
   plugins: [
