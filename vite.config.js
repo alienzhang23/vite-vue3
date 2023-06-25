@@ -50,4 +50,21 @@ export default defineConfig({
       ],
     },
   },
+  build: {
+    // 打包配置
+    assetsDir: "static", //路径
+    rollupOptions: {
+      input: {
+        // 入口文件
+        main: path.resolve(__dirname, "index.html")
+        // 其他入口
+        // nested: resolve(__dirname, 'xxxx.index')
+      },
+      output: {
+        entryFileNames: `static/[name].js`,
+        chunkFileNames: `static/[name].js`,
+        assetFileNames: `static/[name].[ext]`
+      }
+    }
+  }
 });
